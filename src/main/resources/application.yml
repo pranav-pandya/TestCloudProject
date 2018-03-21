@@ -1,0 +1,36 @@
+# ===================================================================
+# APPLICATION PROPERTIES
+#
+# List of Common Application Properties:
+#   - http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+#
+# ===================================================================
+
+# EMBEDDED SERVER CONFIGURATION
+# server.port: 8085
+
+# LOGGING
+
+
+# ----------------------------------------
+# SECURITY PROPERTIES
+#
+# Using Production OIDC Environment created using the self-service tool https://oidcapi.corporate.ge.com/
+# Replace the redirect-uri, clientId, and clientSecret with your application specific values
+# ----------------------------------------
+# SECURITY (SecurityProperties)
+security:
+  sessions: NEVER
+  ignored: /favicon.ico, /resources/**
+  basic:
+    enabled: false
+
+  oauth2:
+    resource:
+      userInfoUri: https://fssfed.ge.com/fss/idp/userinfo.openid
+      prefer-token-info: true
+    
+spring:
+  resources:
+    chain:
+      enabled: true
